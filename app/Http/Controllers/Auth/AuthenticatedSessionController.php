@@ -33,7 +33,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $token = $request->user()->createToken("api-token-{$request->user}")->plainTextToken;
+        $request->session()->put('auth_token', $token);
+
+        return redirect()->intended(route('history', absolute: false));
     }
 
     /**
@@ -41,6 +44,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        Auth::guard('web')->user()->tokens()->delete();
+        $request->session()->forget('auth_token');
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

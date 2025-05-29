@@ -87,11 +87,12 @@ class StockService extends CommonService implements StockInterface
                 return $query->where('symbol', $symbol);
             })
             ->when($startDate, function ($query) use ($startDate) {
-                return $query->where('created_at', '>=', $startDate);
+                return $query->whereDate('created_at', '>=', $startDate);
             })
             ->when($endDate, function ($query) use ($endDate) {
-                return $query->where('created_at', '<=', $endDate);
+                return $query->whereDate('created_at', '<=', $endDate);
             })
+            ->orderBy('created_at', 'desc')
             ->get()
             ->toArray();
     }

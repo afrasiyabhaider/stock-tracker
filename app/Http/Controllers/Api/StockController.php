@@ -84,7 +84,7 @@ class StockController extends Controller
             return response()->json(['message' => $e->validator->errors()->first()], 422);
         }
         $symbol = $request->query('q');
-        $user = Auth::user();
+        $user = Auth::user() ?? Auth::guard('web')->user();
         if (!$user) {
             return $this->sendError(
                 'Unauthenticated. Please log in to access this resource.',
@@ -104,10 +104,7 @@ class StockController extends Controller
                     $quote['code']
                 );
             }
-            return $this->sendSuccess(
-                $quote,
-                'Stock quote fetched successfully.'
-            );
+            return $quote;
         } catch (\Exception $e) {
             Log::error('Failed to fetch stock quote', [
                 'symbol' => $symbol,
