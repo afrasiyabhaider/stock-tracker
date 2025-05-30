@@ -25,8 +25,14 @@ import InputError from '@/components/InputError.vue';
 async function fetchQuote() {
     error.value = '';
     quote.value = null;
+    const $toast = useToast();
     if (!symbol.value) {
         error.value = 'Please enter a stock symbol.';
+        $toast.error(error.value, {
+            position: 'top-right',
+            duration: 5000,
+            dismissible: true,
+        });
         return;
     }
     loading.value = true;
@@ -37,7 +43,6 @@ async function fetchQuote() {
         // The API returns { success, message, data }
         quote.value = response.data.data;
         if (response.data.code == 200) {
-            const $toast = useToast();
             $toast.success(`Fetched quote for "${symbol.value.toUpperCase()}" successfully, please check your email!`, {
                 position: 'top-right',
                 duration: 5000,
@@ -52,6 +57,12 @@ async function fetchQuote() {
         } else {
             error.value = e.message || 'Network error.';
         }
+        $toast.error(error.value, {
+            position: 'top-right',
+            duration: 5000,
+            dismissible: true,
+        });
+        quote.value = null;
     } finally {
         loading.value = false;
     }
@@ -75,9 +86,6 @@ async function fetchQuote() {
                         </template>
                     </Button>
                 </form>
-                <div v-if="error" class="mt-2 text-red-500">
-                    <InputError :message="error" />
-                </div>
             </div>
             <div v-if="quote && quote.length" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

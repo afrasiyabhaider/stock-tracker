@@ -17,6 +17,16 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('register'), {
+        onSuccess: (page) => {
+            // If backend returns a token, store it and set axios default
+            if (page.props?.ziggy?.token) {
+                localStorage.setItem('auth_token', page.props.ziggy.token);
+                // Dynamically import axios to avoid SSR issues
+                import('axios').then(axiosModule => {
+                    axiosModule.default.defaults.headers.common['Authorization'] = `Bearer ${page.props.ziggy.token}`;
+                });
+            }
+        },
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };

@@ -44,6 +44,7 @@ async function fetchHistory() {
             fetchHistory();
         }else{
             error.value = e.response?.data?.message || 'Network error.';
+            history.value = e.response.data.data || [];
             $toast.error(error.value, {
                     position: 'top-right',
                     duration: 5000,

@@ -200,8 +200,8 @@ class StockController extends Controller
         try {
             $request->validate([
                 'symbol' => 'nullable|string|max:15|regex:/^[A-Za-z,]+$/',
-                'start_date' => 'nullable|date_format:Y-m-d',
-                'end_date' => 'nullable|date_format:Y-m-d',
+                'start' => 'nullable|date_format:Y-m-d',
+                'end' => 'nullable|date_format:Y-m-d',
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->validator->errors()->first()], 422);
@@ -209,8 +209,8 @@ class StockController extends Controller
 
         $queries = $this->stockService->getHistory(
             request('symbol'),
-            request('start_date'),
-            request('end_date')
+            request('start'),
+            request('end')
         );
 
         if (empty($queries)) {
