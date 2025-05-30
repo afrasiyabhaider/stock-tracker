@@ -150,23 +150,45 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "symbol": {
-                                            "type": "string"
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
                                         },
-                                        "name": {
-                                            "type": "string"
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Success"
                                         },
-                                        "open": {
-                                            "type": "number"
-                                        },
-                                        "high": {
-                                            "type": "number"
-                                        },
-                                        "low": {
-                                            "type": "number"
-                                        },
-                                        "close": {
-                                            "type": "number"
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "International Business Machines"
+                                                    },
+                                                    "symbol": {
+                                                        "type": "string",
+                                                        "example": "IBM"
+                                                    },
+                                                    "open": {
+                                                        "type": "string",
+                                                        "example": "$263.11"
+                                                    },
+                                                    "high": {
+                                                        "type": "string",
+                                                        "example": "$265.00"
+                                                    },
+                                                    "low": {
+                                                        "type": "string",
+                                                        "example": "$259.96"
+                                                    },
+                                                    "close": {
+                                                        "type": "string",
+                                                        "example": "$263.23"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"

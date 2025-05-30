@@ -54,12 +54,21 @@ class StockController extends Controller
      *         response=200,
      *         description="Stock quote",
      *         @OA\JsonContent(
-     *             @OA\Property(property="symbol", type="string"),
-     *             @OA\Property(property="name", type="string"),
-     *             @OA\Property(property="open", type="number"),
-     *             @OA\Property(property="high", type="number"),
-     *             @OA\Property(property="low", type="number"),
-     *             @OA\Property(property="close", type="number")
+     *             type="object",
+     *             @OA\Property(property="code", type="integer", example=200),
+     *             @OA\Property(property="message", type="string", example="Success"),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="name", type="string", example="International Business Machines"),
+     *                     @OA\Property(property="symbol", type="string", example="IBM"),
+     *                     @OA\Property(property="open", type="string", example="$263.11"),
+     *                     @OA\Property(property="high", type="string", example="$265.00"),
+     *                     @OA\Property(property="low", type="string", example="$259.96"),
+     *                     @OA\Property(property="close", type="string", example="$263.23")
+     *                 )
+     *             )
      *         )
      *     ),
      *     @OA\Response(
