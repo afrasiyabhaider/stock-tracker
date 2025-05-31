@@ -185,4 +185,16 @@ Interactive API documentation is accessible via Swagger UI:
 3. Enter your token and confirm.
 4. Authenticated requests can now be made directly from the UI.
 
+## API Documentation (Postman)
+
+A Postman collection for the Stock Tracker API is available for manual testing and exploration.
+
+You can find the latest Postman collection in the [`storage/api-doc`](storage/api-doc) directory of the repository.
+
+### Importing the Collection
+
+1. Open Postman.
+2. Click **Import** and select the JSON file from `storage/api-doc`.
+3. Set the environment variables (such as `base_url` and authentication tokens) as needed.
+
 ---

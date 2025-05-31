@@ -1,0 +1,685 @@
+{
+	"info": {
+		"_postman_id": "5b385571-65f5-4c6a-b566-73dd82d86f14",
+		"name": "Stock Tracker API",
+		"description": "API documentation for the Stock Tracker application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8822545"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Login and generate token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "Authenticates a user and returns an API token."
+							},
+							"response": [
+								{
+									"name": "Authentication successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"consequat in\"\n}"
+								},
+								{
+									"name": "Invalid credentials",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"login"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "register",
+					"item": [
+						{
+							"name": "Register a new user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								},
+								"description": "Creates a new user and returns an API token."
+							},
+							"response": [
+								{
+									"name": "User registered successfully",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/register",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"token\": \"consequat in\"\n}"
+								},
+								{
+									"name": "Validation error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/register",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"register"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "stock",
+					"item": [
+						{
+							"name": "quote",
+							"item": [
+								{
+									"name": "Get stock quote",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/stock/quote?q=IBM",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"stock",
+												"quote"
+											],
+											"query": [
+												{
+													"key": "q",
+													"value": "IBM",
+													"description": "(Required) Stock symbol"
+												}
+											]
+										},
+										"description": "Returns the latest stock quote for a given symbol and emails the result to the user. Requires authentication using a Bearer token generated by the login endpoint."
+									},
+									"response": [
+										{
+											"name": "Stock quote",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/quote?q=IBM",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"quote"
+													],
+													"query": [
+														{
+															"key": "q",
+															"value": "IBM",
+															"description": "(Required) Stock symbol"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"code\": 200,\n  \"message\": \"Success\",\n  \"data\": [\n    {\n      \"name\": \"International Business Machines\",\n      \"symbol\": \"IBM\",\n      \"open\": \"$263.11\",\n      \"high\": \"$265.00\",\n      \"low\": \"$259.96\",\n      \"close\": \"$263.23\"\n    },\n    {\n      \"name\": \"International Business Machines\",\n      \"symbol\": \"IBM\",\n      \"open\": \"$263.11\",\n      \"high\": \"$265.00\",\n      \"low\": \"$259.96\",\n      \"close\": \"$263.23\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Unauthenticated",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/quote?q=IBM",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"quote"
+													],
+													"query": [
+														{
+															"key": "q",
+															"value": "IBM",
+															"description": "(Required) Stock symbol"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										},
+										{
+											"name": "Failed to fetch stock quote",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/quote?q=IBM",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"quote"
+													],
+													"query": [
+														{
+															"key": "q",
+															"value": "IBM",
+															"description": "(Required) Stock symbol"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "history",
+							"item": [
+								{
+									"name": "Get stock query history",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/stock/history?symbol=magna laborum repreh&start_date=1987-01-06&end_date=1987-01-06",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"stock",
+												"history"
+											],
+											"query": [
+												{
+													"key": "symbol",
+													"value": "magna laborum repreh",
+													"description": "Stock symbol to filter history"
+												},
+												{
+													"key": "start_date",
+													"value": "1987-01-06",
+													"description": "Start date for filtering history (YYYY-MM-DD)"
+												},
+												{
+													"key": "end_date",
+													"value": "1987-01-06",
+													"description": "End date for filtering history (YYYY-MM-DD)"
+												}
+											]
+										},
+										"description": "Returns the authenticated user's stock query history. Optional filters: symbol, start_date, end_date."
+									},
+									"response": [
+										{
+											"name": "Stock query history",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/history?symbol=magna laborum repreh&start_date=1987-01-06&end_date=1987-01-06",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"history"
+													],
+													"query": [
+														{
+															"key": "symbol",
+															"value": "magna laborum repreh",
+															"description": "Stock symbol to filter history"
+														},
+														{
+															"key": "start_date",
+															"value": "1987-01-06",
+															"description": "Start date for filtering history (YYYY-MM-DD)"
+														},
+														{
+															"key": "end_date",
+															"value": "1987-01-06",
+															"description": "End date for filtering history (YYYY-MM-DD)"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": true,\n  \"message\": \"enim \",\n  \"data\": [\n    {\n      \"date\": \"2009-01-23T13:06:05.789Z\",\n      \"name\": \"nisi in\",\n      \"symbol\": \"ullamco cillu\",\n      \"open\": -32181595.265813187,\n      \"high\": -93553340.27613363,\n      \"low\": -42320094.432506084,\n      \"close\": 13163848.150393158\n    },\n    {\n      \"date\": \"2023-08-24T23:48:46.786Z\",\n      \"name\": \"amet laborum\",\n      \"symbol\": \"consectetur aliqua\",\n      \"open\": 51167367.31057227,\n      \"high\": -79238556.64853585,\n      \"low\": 85633622.20748445,\n      \"close\": 7019624.08109203\n    }\n  ]\n}"
+										},
+										{
+											"name": "No stock history found for the given criteria",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/history?symbol=magna laborum repreh&start_date=1987-01-06&end_date=1987-01-06",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"history"
+													],
+													"query": [
+														{
+															"key": "symbol",
+															"value": "magna laborum repreh",
+															"description": "Stock symbol to filter history"
+														},
+														{
+															"key": "start_date",
+															"value": "1987-01-06",
+															"description": "Start date for filtering history (YYYY-MM-DD)"
+														},
+														{
+															"key": "end_date",
+															"value": "1987-01-06",
+															"description": "End date for filtering history (YYYY-MM-DD)"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": false,\n  \"message\": \"Duis ut consequat occaecat cillum\"\n}"
+										},
+										{
+											"name": "Validation error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/stock/history?symbol=magna laborum repreh&start_date=1987-01-06&end_date=1987-01-06",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"stock",
+														"history"
+													],
+													"query": [
+														{
+															"key": "symbol",
+															"value": "magna laborum repreh",
+															"description": "Stock symbol to filter history"
+														},
+														{
+															"key": "start_date",
+															"value": "1987-01-06",
+															"description": "Start date for filtering history (YYYY-MM-DD)"
+														},
+														{
+															"key": "end_date",
+															"value": "1987-01-06",
+															"description": "End date for filtering history (YYYY-MM-DD)"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"message\": \"sint ea laborum\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8090",
+			"description": "Base URL for the API. Change this to your server's URL if different."
+		},
+		{
+			"key": "bearerToken",
+			"value": "your_bearer_token_here",
+			"description": "Replace with the token obtained from the login endpoint."
+		}
+	]
+}
