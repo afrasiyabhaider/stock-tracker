@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Factories\StockHistoryFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,5 +22,8 @@ class DatabaseSeeder extends Seeder
                 'email' => 'test@example.com',
             ]);
         }
+        StockHistoryFactory::new()->count(10)->create([
+            'user_id' => $user->id,
+        ]);
     }
 }
